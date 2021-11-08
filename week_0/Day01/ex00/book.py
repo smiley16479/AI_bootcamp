@@ -26,7 +26,7 @@ class Book:
         self.name = nom
         self.last_update = now 
         self.creation_date = now
-        self.recipes_list = {"starter", "lunch", "dessert"}
+        self.recipes_list = {"starter" : None, "lunch" : None, "dessert" : None}
 
     def get_recipe_by_name(self, name):
         """Print a recipe with the name `name` and return the instance"""

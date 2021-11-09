@@ -23,15 +23,17 @@ class Recipe:
 
     def __init__(self, nom, cooking_level,cooking_time,ingredients, description, recipe_type):
         """Implement a new 'Recipes' object"""
-        a = nom if isinstance(nom, str) else print("Name is not a string")
-        a = cooking_level if isinstance(cooking_level, int) else print("cooking level is not an int")
-        a = cooking_time if isinstance(cooking_time, int)   else print("cooking time is not an int")
-        a = ingredients if isinstance(ingredients, list)    else print("Ingredients is not a list")
-        a = description if isinstance(description, str)     else print("description is not a string")
-        a = recipe_type if isinstance(recipe_type, str)     else print("recipe_type is not a string")
-        if a == None:
+        array = []
+        array.append( nom if isinstance(nom, str) else print("Name is not a string"))
+        array.append( cooking_level if isinstance(cooking_level, int) else print("cooking level is not an int"))
+        array.append( cooking_time if isinstance(cooking_time, int)   else print("cooking time is not an int"))
+        array.append( ingredients if isinstance(ingredients, list)    else print("Ingredients is not a list"))
+        array.append( description if isinstance(description, str)     else print("description is not a string"))
+        array.append( recipe_type if isinstance(recipe_type, str)     else print("recipe_type is not a string"))
+        if a in array == None:
+            print ("something bad")
             exit()
-        self.name = nom 
+        self.name = nom
         self.cooking_lvl  = cooking_level
         self.cooking_time = cooking_time
         self.ingredients  = ingredients

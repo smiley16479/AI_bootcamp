@@ -3,13 +3,13 @@
 #                                                         :::      ::::::::    #
 #    recipe.py                                          :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: adtheus <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: adtheus <adtheus@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/15 19:57:43 by adtheus           #+#    #+#              #
-#    Updated: 2020/01/15 23:42:15 by adtheus          ###   ########.fr        #
+#    Updated: 2021/11/09 16:45:44 by adtheus          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-   
+
 from sys import *
 
 class Recipe:
@@ -23,16 +23,22 @@ class Recipe:
 
     def __init__(self, nom, cooking_level,cooking_time,ingredients, description, recipe_type):
         """Implement a new 'Recipes' object"""
-        array = []
-        array.append( nom if isinstance(nom, str) else print("Name is not a string"))
-        array.append( cooking_level if isinstance(cooking_level, int) else print("cooking level is not an int"))
-        array.append( cooking_time if isinstance(cooking_time, int)   else print("cooking time is not an int"))
-        array.append( ingredients if isinstance(ingredients, list)    else print("Ingredients is not a list"))
-        array.append( description if isinstance(description, str)     else print("description is not a string"))
-        array.append( recipe_type if isinstance(recipe_type, str)     else print("recipe_type is not a string"))
-        if a in array == None:
-            print ("something bad")
-            exit()
+        try :
+            if not isinstance(nom, str) or nom == "":
+                raise TypeError("Name is not a string")
+            if not isinstance(cooking_level, int) or cooking_level < 0:
+                raise TypeError("cooking level is not an int")
+            if not isinstance(cooking_time, int) or cooking_time < 0:
+                raise TypeError("cooking time is not an int")
+            if not isinstance(ingredients, list) or len(ingredients) == 0:
+                raise TypeError("Ingredients is not a list")
+            if not isinstance(description, str):
+                raise TypeError("description is not a string")
+            if not isinstance(recipe_type, str) or recipe_type not in {"starter", "lunch", "dessert"}:
+                raise TypeError("recipe_type is not a existing type")
+        except TypeError:
+            print('An exception flew by!')
+            raise
         self.name = nom
         self.cooking_lvl  = cooking_level
         self.cooking_time = cooking_time

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    book.py                                            :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: adtheus <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: adtheus <adtheus@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/15 19:21:06 by adtheus           #+#    #+#              #
-#    Updated: 2020/01/15 22:03:23 by adtheus          ###   ########.fr        #
+#    Updated: 2021/11/09 17:20:29 by adtheus          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ class Book:
         """Print a recipe with the name `name` and return the instance"""
         print("la recette",  name, "comporte ces ingredients")
         print(self.recipes_list[name])
+        # print (str(recipes_list[name.recipe_type][name.name]))
 
     def get_recipes_by_types(self, recipe_type):
         """Get all recipe names for a given recipe_type """
@@ -40,4 +41,11 @@ class Book:
 
     def add_recipe(self, recipe):
         """Add a recipe to the book and update last_update"""
+        try :
+            if type(recipe) != recipe.Recipe:
+                raise TypeError("recipe is not a Recipe")
+        except TypeError:
+            print('An exception flew by!')
+            raise
+        recipes_list[recipe.recipe_type].append(recipe)
         pass

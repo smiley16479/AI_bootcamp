@@ -9,7 +9,7 @@ def ft_reduce(function_to_apply, list_of_inputs):
 		if i == len(list_of_inputs) -1:
 			break
 		else:
-			product += function_to_apply(list_of_inputs[i], list_of_inputs[i + 1])
+			product = function_to_apply(product, list_of_inputs[i + 1])
 	return product
 
 

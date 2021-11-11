@@ -1,3 +1,6 @@
+import sys
+sys.path.append('../') # include path of the_bank module
+
 from the_bank import Account, Bank
 
 if __name__ == "__main__":

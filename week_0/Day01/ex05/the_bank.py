@@ -25,8 +25,11 @@ class Bank(object):
 		self.account = []
 
 	def add(self, account):
-		if valid_account(account):
+		if self.valid_account(account):
+			print('compt valide')
 			self.account.append(account)
+		else:
+			print('compt invalide')
 
 	def transfer(self, origin, dest, amount):
 		"""
@@ -37,10 +40,12 @@ class Bank(object):
 			@return
 			True if success, False if an error occured
 		"""
-		for i in account:
+		for i in self.account:
 			if i.name == origin or i.id == origin:
+				print('compte trouve')
 				if i.value >= amount:
-					for j in account:
+					for j in self.account:
+						print('compte 2 trouve')
 						if j.name == origin or j.id == origin:
 							i.value -= amount
 							j.value += amount
@@ -52,12 +57,13 @@ class Bank(object):
 	    delattr(object_, old_attribute_name)
 
 	def fix_account(self, account):
-		""" fix the corrupted account @account: int(id) or str(name) of the account @return True if success, False if an error occured"""		
+		""" fix the corrupted account @account: int(id) or str(name) of the account @return True if success, False if an error occured"""
+		
 
-	def valid_account(account):
+	def valid_account(self, account):
 		check = [1,0,0,0,0]
 		if isinstance(account, Account):
-			if len(dir(account)) % 2 == 1 :
+			if len(account.__dict__) % 2 == 1 :
 				for i in account.__dict__.keys():
 					if i[0] == 'b':
 						check[0] = 0
@@ -75,13 +81,12 @@ class Bank(object):
 				return True
 		return False
 
-
-# Security means checking if the Account is:
-# • the right object
-# • that it is not corrupted
-# • and that it has enough money
-# How do we define if a bank account is corrupted?
-# • It has an even number of attributes.
-# • It has an attribute starting with b.
-# • It has no attribute starting with zip or addr. • It has no attribute name, id and value.
-# Check out the dir function.
+	# Security means checking if the Account is:
+	# • the right object
+	# • that it is not corrupted
+	# • and that it has enough money
+	# How do we define if a bank account is corrupted?
+	# • It has an even number of attributes.
+	# • It has an attribute starting with b.
+	# • It has no attribute starting with zip or addr. • It has no attribute name, id and value.
+	# Check out the dir function.

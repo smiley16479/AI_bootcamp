@@ -11,8 +11,8 @@ def log(func):
 		start = time.time()
 		user = os.getenv('USER')
 		f = open('machine.log', "a")
-		f.write('(' + user + ')Running: ' + func.__name__.ljust(20) + '[ exec-time =' + '{0:.3f}'.format(time.time() - start) + 'ms ]\n')
 		ret = func(self) if len(arg) == 0 else func(self, arg[0])
+		f.write('(' + user + ')Running: ' + func.__name__.ljust(20) + '[ exec-time = ' + '{0:.3f}'.format(time.time() - start) + (' ms ]\n' if (time.time() - start) < 1 else ' s ]\n'))
 		f.close()
 		return ret
 	return inner

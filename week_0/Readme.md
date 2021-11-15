@@ -1,4 +1,4 @@
-You can reload a module when it has already been imported by using importlib.reload():
+ You can reload a module when it has already been imported by using importlib.reload():
 
 from importlib import reload  # Python 3.4+
 import foo
